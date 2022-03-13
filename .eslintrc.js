@@ -3,11 +3,18 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   extends: [
     'airbnb',
+    'airbnb/hooks',
     'airbnb-typescript'
   ],
   parserOptions: {
     project: './tsconfig.json'
   },
+  overrides: [{
+    files: ['src/redux/slices/*.ts'],
+    rules: {
+      'no-param-reassign': 'off',
+    }
+  }],
   rules: {
     // Typescript
     '@typescript-eslint/comma-dangle': 'off',
@@ -23,6 +30,12 @@ module.exports = {
       allow: ['warn', 'info']
     }],
     'max-len': 'off',
+    // React
+    'react/function-component-definition': 'off',
+    'react/button-has-type': 'off',
+    'react/require-default-props': 'off',
+    'react/prop-types': 'off',
+    'react/jsx-props-no-spreading': 'off',
     // Import
     'import/prefer-default-export': 'off',
     'import/order': ['error', {
